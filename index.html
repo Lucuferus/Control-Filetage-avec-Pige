@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcul Filetage & Pige - Historique Persistant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1976d2">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>Calcul Filetage & Pige</header>
+
+  <div class="container">
+    <div class="tabs">
+      <button class="tablink active" onclick="ouvrirOnglet(event,'calcul')">Calcul</button>
+      <button class="tablink" onclick="ouvrirOnglet(event,'liste')">Liste des piges</button>
+    </div>
+
+    <div id="calcul" class="tabcontent" style="display:block;">
+      <label for="presetM">Choisir un filetage :</label>
+      <select id="presetM" onchange="appliquerPreset()">
+        <option value="">-- Sélectionner --</option>
+        <option value="M6">M6</option>
+        <option value="M8">M8</option>
+        <option value="M10">M10</option>
+        <option value="M12">M12</option>
+        <option value="M14">M14</option>
+        <option value="M16">M16</option>
+        <option value="M20">M20</option>
+      </select>
+
+      <label>Filetage M :</label>
+      <input type="number" id="M" step="0.001" placeholder="Ex: 12">
+      <label>Pas P (mm) :</label>
+      <input type="number" id="P" step="0.001" placeholder="Ex: 1.25">
+      <label>Diamètre majeur max :</label>
+      <input type="number" id="dmajmax" step="0.001">
+      <label>Diamètre majeur min :</label>
+      <input type="number" id="dmajmin" step="0.001">
+      <label>Emax (mm) :</label>
+      <input type="number" id="Emax" step="0.001">
+      <label>Emin (mm) :</label>
+      <input type="number" id="Emin" step="0.001">
+      <label>Nombre de fils de pige :</label>
+      <input type="number" id="nb_pige" value="3" min="1" max="5">
+      <label>Diamètre de fil de pige (mm) :</label>
+      <input type="number" id="w" step="0.001" placeholder="Laisser vide pour calcul automatique">
+      <button class="btn-pige" onclick="calculerPige()">Calculer la pige (W = 0,57735 × P)</button>
+
+      <button class="btn-calc" onclick="calculer()">Calculer</button>
+      <button class="btn-reset" onclick="resetForm()">Réinitialiser</button>
+      <button class="btn-reset" onclick="supprimerHistorique()">Supprimer historique</button>
+
+      <div class="result-card" id="result">Entrez les valeurs pour calculer.</div>
+
+      <h3>Historique :</h3>
+      <div class="history" id="history"></div>
+    </div>
+
+    <div id="liste" class="tabcontent">
+      <h3>Liste des piges disponibles :</h3>
+      <ul id="listePiges"></ul>
+    </div>
+  </div>
+
+  <div id="fullscreenResult" class="fullscreen-result">
+    <button class="close-btn" onclick="fermerResult()">×</button>
+    <div id="MmaxDisplay" class="large"></div>
+    <div id="MminDisplay" class="large"></div>
+    <div class="overlay" id="overlayInfo"></div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
