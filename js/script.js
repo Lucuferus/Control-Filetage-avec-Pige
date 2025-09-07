@@ -44,6 +44,27 @@ function afficherListePiges(){
   });
 }
 
+// --- Remplir select pige ---
+function remplirSelectPige() {
+  const select = document.getElementById("selectPige");
+  select.innerHTML = '<option value="">-- Choisir dans la liste --</option>';
+  pigesDisponibles.forEach(p => {
+    p.pas.forEach(pas => {
+      const opt = document.createElement("option");
+      opt.value = p.diam;
+      opt.textContent = `Pige ${p.nom} mm → Pas ${pas}`;
+      select.appendChild(opt);
+    });
+  });
+}
+
+function choisirPige() {
+  const valeur = document.getElementById("selectPige").value;
+  if (valeur) {
+    document.getElementById("w").value = valeur;
+  }
+}
+
 // --- Ajustement texte fullscreen ---
 function ajusterTailleTexte(el){
   let parentWidth = el.parentElement.offsetWidth - 40;
@@ -236,6 +257,7 @@ document.getElementById('result').onclick=function(){
 window.onload=function(){
   chargerHistorique();
   afficherListePiges();
+  remplirSelectPige(); // <-- ajouté pour la liste déroulante
 }
 window.addEventListener("resize",()=>{
   ajusterTailleTexte(document.getElementById("MmaxDisplay"));
