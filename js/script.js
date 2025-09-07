@@ -51,8 +51,8 @@ function remplirSelectPige() {
   pigesDisponibles.forEach(p => {
     p.pas.forEach(pas => {
       const opt = document.createElement("option");
-      opt.value = p.diam;
-      opt.textContent = `Pige ${p.nom} mm → Pas ${pas}`;
+      opt.value = p.diam; // valeur réelle utilisée pour le calcul
+      opt.textContent = `Pige ${p.nom} - Diamètre: ${p.diam} mm → Pas ${pas}`;
       select.appendChild(opt);
     });
   });
