@@ -49,6 +49,11 @@
       <input type="number" id="w" step="0.001" placeholder="Laisser vide pour calcul automatique">
       <button class="btn-pige" onclick="calculerPige()">Calculer la pige (W = 0,57735 × P)</button>
 
+      <label>Sélectionner une pige dans la table :</label>
+      <select id="selectPige" onchange="choisirPige()">
+        <option value="">-- Choisir dans la liste --</option>
+      </select>
+
       <button class="btn-calc" onclick="calculer()">Calculer</button>
       <button class="btn-reset" onclick="resetForm()">Réinitialiser</button>
       <button class="btn-reset" onclick="supprimerHistorique()">Supprimer historique</button>
@@ -75,3 +80,4 @@
   <script src="js/script.js"></script>
 </body>
 </html>
+
