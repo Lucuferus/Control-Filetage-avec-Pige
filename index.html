@@ -45,14 +45,15 @@
       <input type="number" id="Emin" step="0.001">
       <label>Nombre de fils de pige :</label>
       <input type="number" id="nb_pige" value="3" min="1" max="5">
-      <label>Diamètre de fil de pige (mm) :</label>
-      <input type="number" id="w" step="0.001" placeholder="Laisser vide pour calcul automatique">
-      <button class="btn-pige" onclick="calculerPige()">Calculer la pige (W = 0,57735 × P)</button>
 
       <label>Sélectionner une pige dans la table :</label>
       <select id="selectPige" onchange="choisirPige()">
         <option value="">-- Choisir dans la liste --</option>
       </select>
+      
+      <label>Diamètre de fil de pige (mm) :</label>
+      <input type="number" id="w" step="0.001" placeholder="Laisser vide pour calcul automatique">
+      <button class="btn-pige" onclick="calculerPige()">Calculer la pige (W = 0,57735 × P)</button>
 
       <button class="btn-calc" onclick="calculer()">Calculer</button>
       <button class="btn-reset" onclick="resetForm()">Réinitialiser</button>
